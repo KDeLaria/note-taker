@@ -18,14 +18,15 @@ router.post("/notes", getDatabase, (req, res) => {
 router.get('/notes', getDatabase, (req, res) =>{res.json(req.database)});
   
 
-// Gets id parameter compares it to the title
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Gets id parameter compares it to the notes in the database
 // writes the database to file without the deleted note
 router.delete("/notes/:id", getDatabase, (req, res) => {
     const deleteNote = req.params.id;
-    console.log("you are here  title: " + note.title);
+    console.log("you are here  title: " + deleteNote);
     // Searches for the note then delets it
     req.database.forEach(note => {
-        if (note.title === title) {
+        if (note.title === deleteNote.title && note.text === deleteNote.text) {
             console.log("note found!");
             delete note;
             res.json({status: "note deleted"});
@@ -38,5 +39,5 @@ router.delete("/notes/:id", getDatabase, (req, res) => {
         res.json({database: "updated"});
     });
 });
-
+///////////////////////////////////////////////////////////////////////////
 module.exports = router;
