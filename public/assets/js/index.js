@@ -104,14 +104,6 @@ const handleNoteView = (e) => {
   renderActiveNote();
 };
 
-// const handleNote = (e) => {
-//   e.preventDefault();
-//   const note = e.target.getAttribute('data-note');
-//   noteTitle.text = note.title;
-//   noteText.text = note.text;
-//   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// };
-
 // Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
