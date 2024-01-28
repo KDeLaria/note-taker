@@ -73,6 +73,7 @@ const handleNoteSave = () => {
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
+    activeNote = null;
     renderActiveNote();
   });
 };
@@ -84,12 +85,13 @@ const handleNoteDelete = (e) => {
 
   const note = e.target;
   const noteId = note.parentElement.getAttribute('data-note');
-  if (activeNote.id === noteId) {
-    activeNote = {};
+  if (activeNote === noteId) {
+    activeNote = null;
   }
 
   deleteNote(noteId).then(() => {
     getAndRenderNotes();
+    activeNote = null;
     renderActiveNote();
   });
 };
@@ -135,8 +137,8 @@ const renderNoteList = async (notes) => {
     const spanEl = document.createElement('span');
     spanEl.classList.add('list-item-title');
     spanEl.innerText = text;
-    liEl.addEventListener('click', handleNoteView);////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////spanEl.addEventListener('click', handleNoteView);
+    //liEl.addEventListener('click', handleNoteView);
+    spanEl.addEventListener('click', handleNoteView);
 
     liEl.append(spanEl);
 
