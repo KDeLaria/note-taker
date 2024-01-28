@@ -22,18 +22,14 @@ router.get('/notes', getDatabase, (req, res) =>{res.json(req.database)});
 // Gets id parameter compares it to the notes in the database
 // writes the database to file without the deleted note
 router.delete("/notes/:id", getDatabase, (req, res) => {
-    const deleteNote = req.params.id;
-    console.log("you are here  title: " + deleteNote);
+    const deleteNote = JSON.parse(req.params.id);
+
     // Searches for the note then delets it
-    req.database.forEach(note => {
-        if (note.title === deleteNote.title && note.text === deleteNote.text) {
-            console.log("note found!");
-            delete note;
-            res.json({status: "note deleted"});
-        }
-    });
+    let database = req.database;
+    database.splice(database[database.indexOf(deleteNote)], 1);
+
     // Rewrite database after delete
-    fs.writeFile("./db/db.json", JSON.stringify(req.database),
+    fs.writeFile("./db/db.json", JSON.stringify(database),
     (err) => {
         if (err) return res.status(500).json({error: err.message});
         res.json({database: "updated"});
