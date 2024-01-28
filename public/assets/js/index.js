@@ -53,7 +53,7 @@ const deleteNote = (id) =>
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
-  if (activeNote.id) {
+  if (activeNote) {
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
     noteTitle.value = activeNote.title;
@@ -97,9 +97,20 @@ const handleNoteDelete = (e) => {
 // Sets the activeNote and displays it
 const handleNoteView = (e) => {
   e.preventDefault();
-  activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
+  if (e.target.getAttribute('class') === "list-group-item") {
+    activeNote = JSON.parse(e.target.getAttribute('data-note'));
+  }
+  else {activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note')); }
   renderActiveNote();
 };
+
+// const handleNote = (e) => {
+//   e.preventDefault();
+//   const note = e.target.getAttribute('data-note');
+//   noteTitle.text = note.title;
+//   noteText.text = note.text;
+//   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// };
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
@@ -132,7 +143,8 @@ const renderNoteList = async (notes) => {
     const spanEl = document.createElement('span');
     spanEl.classList.add('list-item-title');
     spanEl.innerText = text;
-    spanEl.addEventListener('click', handleNoteView);
+    liEl.addEventListener('click', handleNoteView);////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////spanEl.addEventListener('click', handleNoteView);
 
     liEl.append(spanEl);
 

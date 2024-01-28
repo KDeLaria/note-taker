@@ -17,8 +17,6 @@ router.post("/notes", getDatabase, (req, res) => {
 // sends the database
 router.get('/notes', getDatabase, (req, res) =>{res.json(req.database)});
   
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
 // Gets id parameter compares it to the notes in the database
 // writes the database to file without the deleted note
 router.delete("/notes/:id", getDatabase, (req, res) => {
@@ -35,5 +33,5 @@ router.delete("/notes/:id", getDatabase, (req, res) => {
         res.json({database: "updated"});
     });
 });
-///////////////////////////////////////////////////////////////////////////
+
 module.exports = router;
