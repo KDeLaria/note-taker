@@ -1,6 +1,6 @@
 # Note Taker
 
-![Note Taker](./images/screenshot.png)
+[<img src="./images/screenshot.png">](https://kdelaria.github.io/note-taker/)
 Visit the [Note Taker](https://kdelaria.github.io/note-taker/) webpage.
 
 ## Description
@@ -13,7 +13,7 @@ N/A
 
 ## Usage
 
-Click on the "Get Started" button to go to the notes page. The left panel will display previously saved notes.  The right panel is the text area where you can enter the title and the text for the note.  Click on the save icon to save the note.
+Click on the **Get Started** button to go to the notes page. The left panel will display previously saved notes.  The right panel is the text area where you can enter the title and the text for the note.  Click on the save icon to save the note.
 
 ## Credits
 
